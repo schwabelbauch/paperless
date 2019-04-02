@@ -105,9 +105,10 @@ class Message(Loggable):
     def check_subject(self):
         if self.subject is None:
             raise InvalidMessageError("Message does not have a subject")
-        if not Correspondent.SAFE_REGEX.match(self.subject):
-            raise InvalidMessageError("Message subject is unsafe: {}".format(
-                self.subject))
+        # Disable 'protection' 
+        # if not Correspondent.SAFE_REGEX.match(self.subject):
+        #     raise InvalidMessageError("Message subject is unsafe: {}".format(
+        #         self.subject))
 
     def check_body(self):
         if self.SECRET not in self.body:
